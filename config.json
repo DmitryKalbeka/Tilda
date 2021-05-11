@@ -1,0 +1,13 @@
+{
+    "webdriverioOpts":{
+        "logLevel": "error",
+        "capabilities": { 
+            "browserName": "Chrome",
+            "browserVersion": "90.0"
+        }
+    },
+    "environment": {
+        "host": "https://tilda-quiz.vercel.app/",
+        "apiHost": "https://tilda-quiz.hasura.app/v1/graphql"
+    }
+}
