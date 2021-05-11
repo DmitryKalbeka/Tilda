@@ -27,10 +27,6 @@ class Browser {
     async quit(){
         logger.info('Quit from browser');
     }
-
-    get getInstance(){
-        return this.browser;
-    }
 }
 
 module.exports = Browser;

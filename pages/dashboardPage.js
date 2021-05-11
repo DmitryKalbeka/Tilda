@@ -1,5 +1,5 @@
 const BasePage = require("./basePage");
-const Button = require('../framework/elements/button');
+const Button = require('../framework/elements/element');
 
 class DashboardPage extends BasePage {
 

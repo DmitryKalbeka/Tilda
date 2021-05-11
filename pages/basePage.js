@@ -1,5 +1,5 @@
 const logger = require('../framework/utils/logger');
-const TextLabel = require('../framework/elements/textLabel');
+const TextLabel = require('../framework/elements/element');
 
 
 class BasePage {

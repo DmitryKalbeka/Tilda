@@ -1,6 +1,7 @@
 const BasePage = require("./basePage");
-const Button = require('../framework/elements/button');
-const TextLabel = require('../framework/elements/textLabel');
+const Button = require('../framework/elements/element');
+const TextLabel = require('../framework/elements/element');
+const Buttons = require('../framework/elements/elements');
 
 class QuestionPage extends BasePage {
     questionPageLocators = {
@@ -28,7 +29,7 @@ class QuestionPage extends BasePage {
         return new Button(this.browser, this.questionPageLocators.nextButton);
     }
     get answers(){
-
+        return new Buttons(this.browser, this.questionPageLocators.answers)
     }
 }
 

@@ -2,8 +2,10 @@ const {describe, it} = require('mocha');
 const {assert} = require('chai');
 const Browser = require('../framework/browser');
 const config = require('../config.json');
-const DashboardPage = require('../pages/dashboardPage');
 const Api = require('../framework/utils/api');
+const DashboardPage = require('../pages/dashboardPage');
+const QuestionPage = require('../pages/questionPage');
+
 
 
 describe ('Test 1', () => {
@@ -11,8 +13,8 @@ describe ('Test 1', () => {
 
     before(async () => {
         browser = new Browser();
-        //await browser.startBrowser();
-        //await browser.go(config.environment.host);
+        await browser.startBrowser();
+        await browser.go(config.environment.host);
     });
 
     after(async () => {
@@ -20,8 +22,16 @@ describe ('Test 1', () => {
     });
 
     it('Test ', async () => {
-        //dashboardPage = new DashboardPage(browser);
-        //await (await dashboardPage.quizCell('Geography')).click();
+        dashboardPage = new DashboardPage(browser);
+        await (await dashboardPage.quizCell('Geography')).click();
+        questionPage = new QuestionPage(browser);
+        await questionPage.answers.waitUntilAtLeastOneElementShown();
+        let answers = await questionPage.answers.getElements()
+        console.log(answers[1].click());
+        //console.log(await questionPage.answers.getLength())
+        //await (await browser.getInstance.$('.chakra-stack > label > div')).waitForExist()
+        //console.log(await questionPage.answers.getLength())
+
         const quiz = {
             name: "New quizz", 
             questions: {
@@ -39,6 +49,6 @@ describe ('Test 1', () => {
                 ]
             }
         }
-        console.log(await Api.createQuiz(quiz)); 
+       // console.log(await Api.createQuiz(quiz)); 
     })
 })

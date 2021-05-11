@@ -1,6 +1,6 @@
 {
     "webdriverioOpts":{
-        "logLevel": "error",
+        "logLevel": "info",
         "capabilities": { 
             "browserName": "Chrome",
             "browserVersion": "90.0"

@@ -8,7 +8,6 @@ class Api {
             query: query, 
             variables: variables
         });
-       console.log(body);
         let response =  await fetch(config.environment.apiHost, {
             method: 'POST',
             headers: {
