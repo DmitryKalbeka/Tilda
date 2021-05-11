@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout=20000"
+    "test:quiz": "mocha test/quizTest.spec.js --timeout=20000",
+    "test:tmp": "mocha test/test1.spec.js --timeout=20000"
   },
   "repository": {
     "type": "git",

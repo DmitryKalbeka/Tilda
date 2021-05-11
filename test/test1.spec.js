@@ -8,32 +8,33 @@ const QuestionPage = require('../pages/questionPage');
 
 
 
-describe ('Test 1', () => {
+describe ('Tilda quiz test', () => {
     let browser;
 
     before(async () => {
-        browser = new Browser();
-        await browser.startBrowser();
-        await browser.go(config.environment.host);
+        //browser = new Browser();
+        //await browser.startBrowser();
+        //await browser.go(config.environment.host);
     });
 
     after(async () => {
-        browser.quit();
+        //browser.quit();
     });
 
     it('Test ', async () => {
-        dashboardPage = new DashboardPage(browser);
-        await (await dashboardPage.quizCell('Geography')).click();
-        questionPage = new QuestionPage(browser);
-        await questionPage.answers.waitUntilAtLeastOneElementShown();
-        let answers = await questionPage.answers.getElements()
-        console.log(answers[1].click());
+        //dashboardPage = new DashboardPage(browser);
+        //await (await dashboardPage.quizCell('Geography')).click();
+        //questionPage = new QuestionPage(browser);
+        //await questionPage.answers.waitUntilAtLeastOneElementShown();
+        //let answers = await questionPage.answers.getElements()
+        //console.log(answers[1].click());
+        
         //console.log(await questionPage.answers.getLength())
         //await (await browser.getInstance.$('.chakra-stack > label > div')).waitForExist()
         //console.log(await questionPage.answers.getLength())
 
         const quiz = {
-            name: "New quizz", 
+            name: `Test Quiz ${Date.now()}`, 
             questions: {
                 data: [
                     {
@@ -49,6 +50,8 @@ describe ('Test 1', () => {
                 ]
             }
         }
+        console.log(quiz);
        // console.log(await Api.createQuiz(quiz)); 
     })
+    
 })
