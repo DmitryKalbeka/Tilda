@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 
 class Api {
 
-    static async doRequest(query, variables = {}) {
+    static async DoRequest(query, variables = {}) {
         let body = JSON.stringify({
             query: query,
             variables: variables
@@ -15,15 +15,15 @@ class Api {
             },
             body: body
         })
-        return await response.json();
+        return response.json();
     }
 
-    static async createQuiz(quiz) {
-        const createQuery = `mutation insertQuiz {\r\n  insert_quizzes_one(object: ${this.queryBuilder(quiz)}) {\r\n    id\r\n  }\r\n}`
-        return (await this.doRequest(createQuery))
+    static async CreateQuiz(quiz) {
+        const createQuery = `mutation insertQuiz {\r\n  insert_quizzes_one(object: ${this.QueryBuilder(quiz)}) {\r\n    id\r\n  }\r\n}`
+        return this.DoRequest(createQuery)
     }
 
-    static queryBuilder(quiz) {
+    static QueryBuilder(quiz) {
         let questionsArray = '';
         quiz.questions.data.forEach((question) => {
             questionsArray += (questionsArray !== '') ? ', ' : '';
@@ -32,9 +32,9 @@ class Api {
         return `{name: "${quiz.name}", questions: {data: [${questionsArray}]}}`
     }
 
-    static async deleteQuiz(id) {
+    static async DeleteQuiz(id) {
         const createQuery = `mutation deleteQuiz {\r\n  delete_quizzes_by_pk(id: "${id}") {\r\n    id\r\n  }\r\n}`
-        return (await this.doRequest(createQuery))
+        return this.DoRequest(createQuery)
     }
 }
 

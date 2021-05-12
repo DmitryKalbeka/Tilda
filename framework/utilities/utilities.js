@@ -1,11 +1,11 @@
 class Utilities {
-    static getRandomInt(max) {
+    static GetRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-    static getRandomIntExcept(max, exception) {
-        let result = Math.floor(Math.random() * max);
-        return result !== exception ? result : this.getRandomInt(max, exception);
+    static GetRandomIntExcept(max, exception) {
+        let result = this.GetRandomInt(max);
+        return result !== exception ? result : this.GetRandomIntExcept(max, exception);
     }
 }
 

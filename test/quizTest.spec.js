@@ -40,10 +40,9 @@ describe('Tilda quiz test', () => {
     let answers;
 
     before(async () => {
-        quizId = (await Api.createQuiz(quiz)).data.insert_quizzes_one.id
+        quizId = (await Api.CreateQuiz(quiz)).data.insert_quizzes_one.id
         browser = new Browser();
         await browser.go(config.config.baseUrl);
-        dashboardPage = new DashboardPage(browser);
     });
 
     beforeEach(async () => {
@@ -56,32 +55,31 @@ describe('Tilda quiz test', () => {
 
     afterEach(async () => {
         await browser.go(config.config.baseUrl);
-        dashboardPage = new DashboardPage(browser);
     })
 
     after(async () => {
-        Api.deleteQuiz(quizId);
+        await Api.DeleteQuiz(quizId);
     });
 
     it('Quiz is opened by clicking ', async () => {
-        await QuizSteps.isQuestionAsExpected(questionPage, quiz.questions.data[0]);
+        await QuizSteps.IsQuestionAsExpected(questionPage, quiz.questions.data[0]);
     })
 
     it('Only one opt of question can be selected', async () => {
         answers = await questionPage.answers.getElements();
-        let selectedAnswerIndex = Utilities.getRandomInt(answers.length);
+        let selectedAnswerIndex = Utilities.GetRandomInt(answers.length);
         await answers[selectedAnswerIndex].click();
-        await QuizSteps.isSelectedAsExpected(answers, answers[selectedAnswerIndex]);
-        selectedAnswerIndex = Utilities.getRandomIntExcept(answers.length, selectedAnswerIndex);
+        await QuizSteps.IsSelectedAsExpected(answers, answers[selectedAnswerIndex]);
+        selectedAnswerIndex = Utilities.GetRandomIntExcept(answers.length, selectedAnswerIndex);
         await answers[selectedAnswerIndex].click();
-        await QuizSteps.isSelectedAsExpected(answers, answers[selectedAnswerIndex]);
+        await QuizSteps.IsSelectedAsExpected(answers, answers[selectedAnswerIndex]);
     })
 
     it('Next button navigation', async () => {
         for (let i = 1; i < quiz.questions.data.length; i++) {
             await questionPage.nextButton.click();
             await questionPage.questionText.waitUntilElementGetsText(quiz.questions.data[i].text)
-            await QuizSteps.isQuestionAsExpected(questionPage, quiz.questions.data[i]);
+            await QuizSteps.IsQuestionAsExpected(questionPage, quiz.questions.data[i]);
         }
         await questionPage.nextButton.click();
         await questionPage.questionText.waitUntilElementGetsText('Tilda Quiz');
@@ -94,21 +92,21 @@ describe('Tilda quiz test', () => {
         for (let i = quiz.questions.data.length - 1; i > 0; i--) {
             await questionPage.backButton.click();
             await questionPage.questionText.waitUntilElementGetsText(quiz.questions.data[i - 1].text)
-            await QuizSteps.isQuestionAsExpected(questionPage, quiz.questions.data[i - 1]);
+            await QuizSteps.IsQuestionAsExpected(questionPage, quiz.questions.data[i - 1]);
         }
         await questionPage.backButton.click();
         await questionPage.questionText.waitUntilElementGetsText('Tilda Quiz');
     })
 
     it('Back arrow button navigation', async () => {
-        await questionPage.backArray.click();
+        await questionPage.backArrow.click();
         await questionPage.questionText.waitUntilElementGetsText('Tilda Quiz');
         for (let i = 1; i < quiz.questions.data.length; i++) {
             await (await dashboardPage.quizTitle(quiz.name)).click();
             for (let j = 0; j < i; j++) {
                 await questionPage.nextButton.click();
             }
-            await questionPage.backArray.click();
+            await questionPage.backArrow.click();
             await questionPage.questionText.waitUntilElementGetsText('Tilda Quiz');
         }
     })
@@ -140,9 +138,11 @@ describe('Tilda quiz test', () => {
                 description: 'First and second answers are correct'
             }
         ];
-        await questionPage.backArray.click();
+        await questionPage.backArrow.click();
         let score = await dashboardPage.quizScore(quiz.name);
-        assert.equal(await score.getText(), `Score: 0/${quiz.questions.data.length}`, 'Question number in quiz cell is wrong')
+        assert.equal(await score.getText(),
+            `Score: 0/${quiz.questions.data.length}`,
+            'Question number in quiz cell is wrong')
 
         for (const givenAnswer of givenAnswers) {
             logger.info(`< ---- Test case: ${givenAnswer.description} --- >`);
@@ -153,11 +153,13 @@ describe('Tilda quiz test', () => {
                 if (givenAnswer.answers[i]) {
                     expectedRightAnswersNumber++
                 }
-                await QuizSteps.clickAnswer(questionPage.answers, quiz.questions.data[i], givenAnswer.answers[i])
+                await QuizSteps.ClickAnswer(questionPage.answers, quiz.questions.data[i], givenAnswer.answers[i])
                 await questionPage.nextButton.click();
             }
             let score = await dashboardPage.quizScore(quiz.name);
-            assert.equal(await score.getText(), `Score: ${expectedRightAnswersNumber}/${quiz.questions.data.length}`, 'Question number in quiz cell is wrong')
+            assert.equal(await score.getText(),
+                `Score: ${expectedRightAnswersNumber}/${quiz.questions.data.length}`,
+                'Question number in quiz cell is wrong')
         }
     })
 })
