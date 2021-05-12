@@ -1,6 +1,6 @@
 const {remote} = require ('webdriverio');
 const config = require('../config.json');
-const logger = require('./utils/logger');
+const logger = require('./utilities/logger');
 
 
 class Browser {
@@ -17,7 +17,6 @@ class Browser {
     async startBrowser(){
         logger.info('Browser starts');
         this.browser = await remote(config.webdriverioOpts);
-        await this.browser.pause(2000);
     }
 
     async go(url){

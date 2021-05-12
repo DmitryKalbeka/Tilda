@@ -1,24 +1,11 @@
 const ButtonActions = require('./elementActions');
-const Button = require('./element');
-const TextLabel = require('./element');
 
-
-class BaseEements{
-    constructor(browser, locator) {
-        this.browser = browser;
-        this.locator = locator;
-    }
-
-    async waitUntilAtLeastOneElementShown(opts={}){
-        await new TextLabel(this.browser, this.locator).waitForExist(opts);
-    }
-}
-
-class Buttons extends BaseEements{
+class Buttons {
     elements;
 
     constructor(browser, locator) {
-       super(browser, locator);
+        this.browser = browser;
+        this.locator = locator;
     }
 
     async getElements() {
@@ -30,6 +17,16 @@ class Buttons extends BaseEements{
             })
         }
         return this.elements
+    }
+
+    async clickByText(text) {
+        let elements = await this.getElements();
+        for (const element of elements) {
+            if (await element.getText() === text) {
+                await element.click();
+                break;
+            }
+        }
     }
 }
 

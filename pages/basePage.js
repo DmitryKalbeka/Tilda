@@ -1,6 +1,4 @@
-const logger = require('../framework/utils/logger');
 const TextLabel = require('../framework/elements/element');
-
 
 class BasePage {
 

@@ -1,7 +1,7 @@
 const BasePage = require("./basePage");
 const Button = require('../framework/elements/element');
 const TextLabel = require('../framework/elements/element');
-const Buttons = require('../framework/elements/elements');
+const Buttons = require('../framework/elements/buttons');
 
 class QuestionPage extends BasePage {
     questionPageLocators = {

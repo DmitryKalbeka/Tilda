@@ -2,19 +2,43 @@ const {describe, it} = require('mocha');
 const {assert} = require('chai');
 const Browser = require('../framework/browser');
 const config = require('../config.json');
-const Api = require('../framework/utils/api');
+const Api = require('../framework/utilities/api');
 const DashboardPage = require('../pages/dashboardPage');
 const QuestionPage = require('../pages/questionPage');
+const QuizSteps = require('../steps/quizSteps');
+const Utilities = require('../framework/utilities/utilities');
 
 
 
 describe ('Tilda quiz test', () => {
     let browser;
+    const quiz = {
+        name: `Geography`,
+        questions: {
+            data: [
+                {
+                    text: "What is the largest city in the world?",
+                    options: "Delhi,Tokyo,Paris,Sao Paulo",
+                    answer: "Delhi"
+                },
+                {
+                    text: "In what country can you visit Machu Picchu?",
+                    options: "Peru,Bolivia,Columbia,Chile",
+                    answer: "Chile"
+                },
+                {
+                    text: "How many countries are there in Africa?",
+                    options: "35,48,54,25",
+                    answer: "35"
+                }
+            ]
+        }
+    }
 
     before(async () => {
-        //browser = new Browser();
-        //await browser.startBrowser();
-        //await browser.go(config.environment.host);
+        // browser = new Browser();
+        // await browser.startBrowser();
+        // await browser.go(config.environment.host);
     });
 
     after(async () => {
@@ -22,36 +46,10 @@ describe ('Tilda quiz test', () => {
     });
 
     it('Test ', async () => {
-        //dashboardPage = new DashboardPage(browser);
-        //await (await dashboardPage.quizCell('Geography')).click();
-        //questionPage = new QuestionPage(browser);
-        //await questionPage.answers.waitUntilAtLeastOneElementShown();
-        //let answers = await questionPage.answers.getElements()
-        //console.log(answers[1].click());
-        
-        //console.log(await questionPage.answers.getLength())
-        //await (await browser.getInstance.$('.chakra-stack > label > div')).waitForExist()
-        //console.log(await questionPage.answers.getLength())
+        console.log(quiz.questions.data[0].text)
 
-        const quiz = {
-            name: `Test Quiz ${Date.now()}`, 
-            questions: {
-                data: [
-                    {
-                        text: "Question 1", 
-                        options: "opt1,opt2,opt3", 
-                        answer: "opt2"
-                    },
-                    {
-                        text: "Question 2", 
-                        options: "opt1,opt2,opt3", 
-                        answer: "opt1"
-                    }
-                ]
-            }
-        }
-        console.log(quiz);
-       // console.log(await Api.createQuiz(quiz)); 
+
+
     })
-    
+
 })
