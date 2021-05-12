@@ -2,14 +2,11 @@
 
 ## Requirements
 
-For development, you will need following things installed in your environment
-- Node.js 
-- Mocha
-- Chai
-- WebdriverIO
+For development, you will need following things:
+- Install Node.js 
+- Update the dependencies
 
-### Node
-- #### Node installation on Windows
+#### Node installation on Windows
 
   Just go on [official Node.js website](https://nodejs.org/) and download the installer.
   Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
@@ -36,20 +33,12 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 
     $ npm install npm -g
 
-### Mocha installation
+### Update dependencies
 
-    $ npm i mocha 
-
-### Chai installation [official Chai website](https://www.chaijs.com/)
-
-    $ npm install chai
-
-### WebdriverIO installation
-
-    $ npm i webdriverio
+    $ npm i
 
 ## Test run
 
 Use following command to run the test:
 
-    $ npm test
+    $ npm run test:quiz

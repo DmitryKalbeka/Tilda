@@ -1,4 +1,4 @@
-const BaseElementActions = require('./actions/baseElementActions');
+const BaseElementActions = require('./baseElementActions');
 
 class ButtonActions extends BaseElementActions {
     constructor(element, name = 'unspecified') {

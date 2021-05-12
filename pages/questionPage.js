@@ -5,7 +5,7 @@ const Buttons = require('../framework/elements/buttons');
 
 class QuestionPage extends BasePage {
     questionPageLocators = {
-        backArray: {locator: '[aria-label="Back"]', name: 'Back array'},
+        backArrow: {locator: '[aria-label="Back"]', name: 'Back arrow'},
         questionText: {locator: '.css-1n79i7i > div', name: 'Question text'},
         answers: {locator: '.chakra-stack > label > div', name: 'Answers'},
         backButton: {locator: '[data-testid="question-back"]', name: 'Back button'},
@@ -16,8 +16,8 @@ class QuestionPage extends BasePage {
         super(browser);
     }
 
-    get backArray() {
-        return new Button(this.browser, this.questionPageLocators.backArray);
+    get backArrow() {
+        return new Button(this.browser, this.questionPageLocators.backArrow);
     }
 
     get questionText() {
