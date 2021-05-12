@@ -3,7 +3,7 @@ const Utilities = require('../framework/utilities/utilities');
 
 class QuizSteps {
 
-    static async isQuestionAsExpected (questionPage, question){
+    static async isQuestionAsExpected(questionPage, question) {
         let expectedAnswers = question.options.split(',');
         let actualAnswers = await questionPage.answers.getElements();
         assert.equal(await questionPage.questionText.getText(), question.text, 'Question text is wrong');
@@ -16,14 +16,14 @@ class QuizSteps {
         }
     }
 
-    static async isSelectedAsExpected(answers, expectedSelection = null){
+    static async isSelectedAsExpected(answers, expectedSelection = null) {
         for (const answer of answers) {
-            let shouldAnswerBeSelected = (expectedSelection == answer)?'':null;
+            let shouldAnswerBeSelected = (expectedSelection == answer) ? '' : null;
             assert.equal(await answer.getAttribute('data-checked'), shouldAnswerBeSelected, `Selection status of the answer '${await answer.getText()}' is wrong`);
         }
     }
 
-    static async clickAnswer(answers, question, isCorrect = true){
+    static async clickAnswer(answers, question, isCorrect = true) {
         let givenAnswer;
         if (isCorrect) {
             givenAnswer = question.answer;

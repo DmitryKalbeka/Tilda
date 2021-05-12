@@ -1,4 +1,4 @@
-const ButtonActions = require('./elementActions');
+const ButtonActions = require('./actions/textLabelActions');
 
 class Buttons {
     elements;

@@ -1,4 +1,4 @@
-const logger = require('../utilities/logger');
+const logger = require('../../utilities/logger');
 
 class BaseElementActions {
 
@@ -9,7 +9,7 @@ class BaseElementActions {
 
     async click(opt = null) {
         logger.info(`Clicking '${this.name}'.`);
-        return (opt)?(this.element).click(opt):(this.element).click()
+        return (opt) ? (this.element).click(opt) : (this.element).click()
     }
 
     async isExisting() {
@@ -35,18 +35,4 @@ class BaseElementActions {
     }
 }
 
-class ButtonActions extends BaseElementActions{
-    constructor(element, name = 'unspecified') {
-        super (element, name);
-    }
-}
-
-class TextLabelActions extends BaseElementActions{
-    constructor(element, name = 'unspecified') {
-        super (element, name);
-    }
-}
-
 module.exports = BaseElementActions;
-module.exports = ButtonActions;
-module.exports = TextLabelActions;

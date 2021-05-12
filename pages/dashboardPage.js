@@ -1,12 +1,15 @@
 const BasePage = require("./basePage");
-const Button = require('../framework/elements/element');
-const TextLabel = require('../framework/elements/element');
+const Button = require('../framework/elements/button');
+const TextLabel = require('../framework/elements/textLabel');
 
 class DashboardPage extends BasePage {
 
     dashboardLocators = {
         quizTitleTemplate: {locator: '//h4[text()="{{quizTitle}}"]', name: '{{quizTitle}} title'},
-        quizScoreTemplate: {locator: '//h4[text()="{{quizTitle}}"]/../span[@data-testid="quiz-score"]', name: '{{quizTitle}} quiz score'}
+        quizScoreTemplate: {
+            locator: '//h4[text()="{{quizTitle}}"]/../span[@data-testid="quiz-score"]',
+            name: '{{quizTitle}} quiz score'
+        }
     }
 
     constructor(browser) {

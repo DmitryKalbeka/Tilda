@@ -1,4 +1,4 @@
-const {remote} = require ('webdriverio');
+const {remote} = require('webdriverio');
 const config = require('../config.json');
 const logger = require('./utilities/logger');
 
@@ -6,24 +6,24 @@ const logger = require('./utilities/logger');
 class Browser {
     browser;
 
-    async $(locator){
+    async $(locator) {
         return this.browser.$(locator);
     }
 
-    async $$(locator){
+    async $$(locator) {
         return this.browser.$$(locator);
     }
 
-    async startBrowser(){
+    async startBrowser() {
         logger.info('Browser starts');
         this.browser = await remote(config.webdriverioOpts);
     }
 
-    async go(url){
+    async go(url) {
         this.browser.url(url);
     }
 
-    async quit(){
+    async quit() {
         logger.info('Quit from browser');
     }
 }

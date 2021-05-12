@@ -1,15 +1,15 @@
 const BasePage = require("./basePage");
-const Button = require('../framework/elements/element');
-const TextLabel = require('../framework/elements/element');
+const Button = require('../framework/elements/button');
+const TextLabel = require('../framework/elements/textLabel');
 const Buttons = require('../framework/elements/buttons');
 
 class QuestionPage extends BasePage {
     questionPageLocators = {
-        backArray:{locator: '[aria-label="Back"]', name: 'Back array'},
-        questionText:{locator: '.css-1n79i7i > div', name: 'Question text'},
-        answers:{locator:'.chakra-stack > label > div', name: 'Answers'},
-        backButton:{locator: '[data-testid="question-back"]', name: 'Back button'},
-        nextButton:{locator: '[data-testid="question-next"]', name: 'Next button'}
+        backArray: {locator: '[aria-label="Back"]', name: 'Back array'},
+        questionText: {locator: '.css-1n79i7i > div', name: 'Question text'},
+        answers: {locator: '.chakra-stack > label > div', name: 'Answers'},
+        backButton: {locator: '[data-testid="question-back"]', name: 'Back button'},
+        nextButton: {locator: '[data-testid="question-next"]', name: 'Next button'}
     }
 
     constructor(browser) {
@@ -19,16 +19,20 @@ class QuestionPage extends BasePage {
     get backArray() {
         return new Button(this.browser, this.questionPageLocators.backArray);
     }
+
     get questionText() {
         return new TextLabel(this.browser, this.questionPageLocators.questionText);
     }
+
     get backButton() {
         return new Button(this.browser, this.questionPageLocators.backButton);
     }
+
     get nextButton() {
         return new Button(this.browser, this.questionPageLocators.nextButton);
     }
-    get answers(){
+
+    get answers() {
         return new Buttons(this.browser, this.questionPageLocators.answers)
     }
 }

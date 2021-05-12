@@ -1,4 +1,4 @@
-const TextLabel = require('../framework/elements/element');
+const TextLabel = require('../framework/elements/textLabel');
 
 class BasePage {
 

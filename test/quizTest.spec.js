@@ -71,11 +71,9 @@ describe('Tilda quiz test', () => {
 
     it('Only one opt of question can be selected', async () => {
         answers = await questionPage.answers.getElements();
-
         let selectedAnswerIndex = Utilities.getRandomInt(answers.length);
         await answers[selectedAnswerIndex].click();
         await QuizSteps.isSelectedAsExpected(answers, answers[selectedAnswerIndex]);
-
         selectedAnswerIndex = Utilities.getRandomIntExcept(answers.length, selectedAnswerIndex);
         await answers[selectedAnswerIndex].click();
         await QuizSteps.isSelectedAsExpected(answers, answers[selectedAnswerIndex]);
@@ -95,10 +93,10 @@ describe('Tilda quiz test', () => {
         for (let i = 1; i < quiz.questions.data.length; i++) {
             await questionPage.nextButton.click();
         }
-        for (let i = quiz.questions.data.length-1; i > 0; i--) {
+        for (let i = quiz.questions.data.length - 1; i > 0; i--) {
             await questionPage.backButton.click();
-            await questionPage.questionText.waitUntilElementGetsText(quiz.questions.data[i-1].text)
-            await QuizSteps.isQuestionAsExpected(questionPage, quiz.questions.data[i-1]);
+            await questionPage.questionText.waitUntilElementGetsText(quiz.questions.data[i - 1].text)
+            await QuizSteps.isQuestionAsExpected(questionPage, quiz.questions.data[i - 1]);
         }
         await questionPage.backButton.click();
         await questionPage.questionText.waitUntilElementGetsText('Tilda Quiz');
@@ -154,7 +152,9 @@ describe('Tilda quiz test', () => {
             await (await dashboardPage.quizTitle(quiz.name)).click();
             for (let i = 0; i < quiz.questions.data.length; i++) {
                 await questionPage.questionText.waitUntilElementGetsText(quiz.questions.data[i].text)
-                if (givenAnswer.answers[i]) {expectedRightAnswersNumber++}
+                if (givenAnswer.answers[i]) {
+                    expectedRightAnswersNumber++
+                }
                 await QuizSteps.clickAnswer(questionPage.answers, quiz.questions.data[i], givenAnswer.answers[i])
                 await questionPage.nextButton.click();
             }

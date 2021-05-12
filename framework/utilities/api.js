@@ -5,10 +5,10 @@ class Api {
 
     static async doRequest(query, variables = {}) {
         let body = JSON.stringify({
-            query: query, 
+            query: query,
             variables: variables
         });
-        let response =  await fetch(config.environment.apiHost, {
+        let response = await fetch(config.environment.apiHost, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,10 +23,10 @@ class Api {
         return (await this.doRequest(createQuery))
     }
 
-    static queryBuilder(quiz){
+    static queryBuilder(quiz) {
         let questionsArray = '';
-        quiz.questions.data.forEach((question) =>{
-            questionsArray += (questionsArray !== '')?', ':'';
+        quiz.questions.data.forEach((question) => {
+            questionsArray += (questionsArray !== '') ? ', ' : '';
             questionsArray += `{text: "${question.text}", options: "${question.options}", answer: "${question.answer}"}`
         })
         return `{name: "${quiz.name}", questions: {data: [${questionsArray}]}}`
