@@ -1,0 +1,21 @@
+Q1: First of all smoke test is covered by automated tests, then I work on critical path tests. 
+In this case I cover all acceptance criteria from the given user story. If I had additional time, 
+I would add a few more tests cases based on the answers to my questions on requirements. For example:
+ - check default state of the quiz page
+ - check whether the previously selected answer is selected when clicking back and next buttons
+ - change the selection on the previous page
+ 
+ Q2: The provided user story is pretty good. However, it does not have all the requirements necessary 
+ for testing. I have the following clarifications to the product manager:
+- should the sequence of the answers be static?
+- should previous answers be shown after the second and following opening of the quiz?
+- should the user have the possibility to interrupt the quiz by back arrow button and then return with 
+saving previously given answers? if yes: should the score of the partially passed quiz be shown?
+- should it be possible to change previous answers?
+After I get answers to these questions, then a user story should be updated with additional scenarios.
+
+As far as I know, user Stories should be written in the following format:
+1. Summary - a brief description of the functionality
+2. Acceptance criteria-  provide the definition of Done for the story.  The product owner should list 
+as many acceptance criteria as possible in order to clarify the intent of the story.  
+So I would add more acceptance criteria to the given user story based on the answers to my questions.
