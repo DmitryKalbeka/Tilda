@@ -1,0 +1,24 @@
+{
+  "name": "tilda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:quiz": "mocha test/quizTest.spec.js --timeout=20000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitryKalbeka/Tilda.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitryKalbeka/Tilda/issues"
+  },
+  "homepage": "https://github.com/DmitryKalbeka/Tilda#readme",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0",
+    "webdriverio": "^7.5.7"
+  }
+}
