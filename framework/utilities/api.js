@@ -1,4 +1,4 @@
-const config = require('../../config.json');
+const config = require('../../wdio.conf');
 const fetch = require('node-fetch')
 
 class Api {
@@ -8,7 +8,7 @@ class Api {
             query: query,
             variables: variables
         });
-        let response = await fetch(config.environment.apiHost, {
+        let response = await fetch(config.config.baseApiHost, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

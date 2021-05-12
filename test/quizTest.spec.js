@@ -1,7 +1,7 @@
 const {describe, it} = require('mocha');
 const {assert} = require('chai');
 const Browser = require('../framework/browser');
-const config = require('../config.json');
+const config = require('../wdio.conf');
 const Api = require('../framework/utilities/api');
 const DashboardPage = require('../pages/dashboardPage');
 const QuestionPage = require('../pages/questionPage');
@@ -42,8 +42,7 @@ describe('Tilda quiz test', () => {
     before(async () => {
         quizId = (await Api.createQuiz(quiz)).data.insert_quizzes_one.id
         browser = new Browser();
-        await browser.startBrowser();
-        await browser.go(config.environment.host);
+        await browser.go(config.config.baseUrl);
         dashboardPage = new DashboardPage(browser);
     });
 
@@ -56,13 +55,12 @@ describe('Tilda quiz test', () => {
     })
 
     afterEach(async () => {
-        await browser.go(config.environment.host);
+        await browser.go(config.config.baseUrl);
         dashboardPage = new DashboardPage(browser);
     })
 
     after(async () => {
         Api.deleteQuiz(quizId);
-        browser.quit();
     });
 
     it('Quiz is opened by clicking ', async () => {

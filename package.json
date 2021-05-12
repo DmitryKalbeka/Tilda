@@ -17,8 +17,16 @@
   },
   "homepage": "https://github.com/DmitryKalbeka/Tilda#readme",
   "dependencies": {
+    "@wdio/cli": "^7.5.7",
     "chai": "^4.3.4",
     "mocha": "^8.4.0",
     "webdriverio": "^7.5.7"
+  },
+  "devDependencies": {
+    "@wdio/local-runner": "^7.5.7",
+    "@wdio/mocha-framework": "^7.5.3",
+    "@wdio/spec-reporter": "^7.5.7",
+    "chromedriver": "^90.0.0",
+    "wdio-chromedriver-service": "^7.0.0"
   }
 }
